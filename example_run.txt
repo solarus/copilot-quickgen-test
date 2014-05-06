@@ -1,0 +1,82 @@
+######################################################################
+### The following is an example output from this generator
+
+$ time make
+./dist/build/copilot-test/copilot-test
+(Word64) s1 = [9,8,7,6,5,4,3,2,1,0] ++ s1
+(Word64) s2 = [1,2,3,4,5,6,7,8,9] ++ s2
+(Word64) s4 = [1,2,3,4,5,6,7,8,9] ++ s4
+(Bool) s3 = [true,false,true,false,true,false,true] ++ (s4 == signum ((s1 * (s1 + (s1 - (s1 + (if not (s1 <= s2) then s1 else (s1 + s1)))))) * (s1 * (s1 + (s1 - (s1 + (if not (s1 <= s2) then s1 else (s1 + s1))))))))
+(Bool) s0 = [true,false,true,false,true,false,true] ++ ((s1 == (s1 * (s1 + (s1 - (s1 + (if not (s1 <= s2) then s1 else (s1 + s1))))))) || (s3 && (s1 == (s1 * (s1 + (s1 - (s1 + (if not (s1 <= s2) then s1 else (s1 + s1)))))))))
+(Bool) s5 = [true] ++ s5
+(Bool) s6 = [true,false,true,false,true,false,true] ++ s6
+(Bool) s7 = [true,false,true,false,true,false,true] ++ s7
+(Word64) s9 = [1234,1,2,3,4,5,6,7,8,9] ++ s9
+(Word64) s8 = [1,2,3,4,5,6,7,8,9] ++ s9
+(Word64) s11 = [1234] ++ s11
+(Word64) s10 = [1,2,3,4,5,6,7,8,9] ++ ((s1 div ((if (s1 <= s1) then ((s1 + s1) - s1) else s1) + s1)) - signum signum s11)
+(Word64) s12 = [1,2,3,4,5,6,7,8,9] ++ s12
+(Word64) s13 = [1234] ++ s13
+(Word64) s15 = [1,2,3,4,5,6,7,8,9] ++ s15
+(Word64) s14 = [1,2,3,4,5,6,7,8,9] ++ abs signum s15
+(Bool) s17 = [true,false,true,false,true,false,true] ++ ((s1 == (s1 * (s1 + (s1 - (s1 + (if not (s1 <= s2) then s1 else (s1 + s1))))))) || s6)
+(Bool) s18 = [true,false,true,false,true,false,true] ++ s18
+(Word64) s16 = [1,2,3,4,5,6,7,8,9] ++ signum (if s17 then (s1 * (s1 + (s1 - (s1 + (if not (s1 <= s2) then s1 else (s1 + s1)))))) else (if (((s18 && (((s1 == (s1 * (s1 + (s1 - (s1 + (if not (s1 <= s2) then s1 else (s1 + s1))))))) || (s3 && (s1 == (s1 * (s1 + (s1 - (s1 + (if not (s1 <= s2) then s1 else (s1 + s1))))))))) && ((s1 == (s1 * (s1 + (s1 - (s1 + (if not (s1 <= s2) then s1 else (s1 + s1))))))) || (s3 && (s1 == (s1 * (s1 + (s1 - (s1 + (if not (s1 <= s2) then s1 else (s1 + s1))))))))))) && not not ((s1 == (s1 * (s1 + (s1 - (s1 + (if not (s1 <= s2) then s1 else (s1 + s1))))))) || (s3 && (s1 == (s1 * (s1 + (s1 - (s1 + (if not (s1 <= s2) then s1 else (s1 + s1)))))))))) && s6) then (s1 + s1) else s1))
+trigger "f5" = s0 [
+  arg ((s1 div ((if (s1 <= s1) then ((s1 + s1) - s1) else s1) + s1)) <= (s1 * signum ((s1 * (s1 + (s1 - (s1 + (if not (s1 <= s2) then s1 else (s1 + s1)))))) * (s1 * (s1 + (s1 - (s1 + (if not (s1 <= s2) then s1 else (s1 + s1))))))))),
+  arg (s5 && (((s1 * (s1 + (s1 - (s1 + (if not (s1 <= s2) then s1 else (s1 + s1)))))) + abs (signum ((s1 * (s1 + (s1 - (s1 + (if not (s1 <= s2) then s1 else (s1 + s1)))))) * (s1 * (s1 + (s1 - (s1 + (if not (s1 <= s2) then s1 else (s1 + s1))))))) + abs (s1 - (s1 + s1)))) > s1)),
+  arg s6,
+  arg abs signum (if not s7 then (s1 div ((if (s1 <= s1) then ((s1 + s1) - s1) else s1) + s1)) else ((s1 + s1) * (s8 * (s1 * (s1 + (s1 - (s1 + (if not (s1 <= s2) then s1 else (s1 + s1)))))))))
+  ]
+trigger "f4" = not (s1 <= s2) [
+  arg (s1 div signum ((s1 * (s1 + (s1 - (s1 + (if not (s1 <= s2) then s1 else (s1 + s1)))))) * (s1 * (s1 + (s1 - (s1 + (if not (s1 <= s2) then s1 else (s1 + s1)))))))),
+  arg signum ((s1 * (s1 + (s1 - (s1 + (if not (s1 <= s2) then s1 else (s1 + s1)))))) * (s1 * (s1 + (s1 - (s1 + (if not (s1 <= s2) then s1 else (s1 + s1))))))),
+  arg (not (signum ((s1 * (s1 + (s1 - (s1 + (if not (s1 <= s2) then s1 else (s1 + s1)))))) * (s1 * (s1 + (s1 - (s1 + (if not (s1 <= s2) then s1 else (s1 + s1))))))) <= signum ((s1 * (s1 + (s1 - (s1 + (if not (s1 <= s2) then s1 else (s1 + s1)))))) * (s1 * (s1 + (s1 - (s1 + (if not (s1 <= s2) then s1 else (s1 + s1)))))))) || ((s1 div ((if (s1 <= s1) then ((s1 + s1) - s1) else s1) + s1)) <= ((s1 + s1) + (s1 div ((if (s1 <= s1) then ((s1 + s1) - s1) else s1) + s1))))),
+  arg ((s1 == (s1 * (s1 + (s1 - (s1 + (if not (s1 <= s2) then s1 else (s1 + s1))))))) || (s3 && (s1 == (s1 * (s1 + (s1 - (s1 + (if not (s1 <= s2) then s1 else (s1 + s1))))))))),
+  arg ((s1 div ((if (s1 <= s1) then ((s1 + s1) - s1) else s1) + s1)) <= ((s1 * (s1 + (s1 - (s1 + (if not (s1 <= s2) then s1 else (s1 + s1)))))) - (s1 + s1)))
+  ]
+trigger "f3" = ((s1 + s1) == s10) [
+  arg ((s1 == (s1 * (s1 + (s1 - (s1 + (if not (s1 <= s2) then s1 else (s1 + s1))))))) || (s3 && (s1 == (s1 * (s1 + (s1 - (s1 + (if not (s1 <= s2) then s1 else (s1 + s1))))))))),
+  arg ((s1 * (s1 + (s1 - (s1 + (if not (s1 <= s2) then s1 else (s1 + s1)))))) <= (s1 div signum abs s12))
+  ]
+trigger "f2" = (signum ((s1 * (s1 + (s1 - (s1 + (if not (s1 <= s2) then s1 else (s1 + s1)))))) * (s1 * (s1 + (s1 - (s1 + (if not (s1 <= s2) then s1 else (s1 + s1))))))) == (s1 div ((if (s1 <= s1) then ((s1 + s1) - s1) else s1) + s1))) [
+  arg s6
+  ]
+trigger "f1" = not (s1 <= s2) [
+  arg s13,
+  arg ((s1 * (s1 + (s1 - (s1 + (if not (s1 <= s2) then s1 else (s1 + s1)))))) + abs (s1 + s1)),
+  arg s14,
+  arg signum (s1 * (s1 + (s1 - (s1 + (if not (s1 <= s2) then s1 else (s1 + s1)))))),
+  arg abs s16
+
+real	0m1.415s
+user	0m1.383s
+sys	0m0.027s
+
+######################################################################
+### The following is an example output from the generator used found
+### Copilot.Core.Random (copilot-core package). Specifically this is
+### from running the Random example found in the copilot package.
+
+$ cabal repl copilot-regression
+...
+*Main> :l Random
+[1 of 1] Compiling Random           ( Examples/Random.hs, interpreted )
+Ok, modules loaded: Random.
+*Random> randomEx
+
+(Bool) s0 = [false] ++ s8
+(Int64) s1 = [6927629709180333817,8062152746723318488,-5829002416539328062] ++ abs ((if (if not false then s0 else true) then drop 2 s1 else 4751783893269890409) div drop 1 s3)
+(Word8) s2 = [46] ++ (if (not not not true || true) then signum ((if (drop 5 s9 >= drop 3 s9) then abs (((if (2 /= (drop 3 s4 * drop 2 s4)) then s2 else (if not false then s2 else 63)) div (if not false then signum 141 else (abs 39 * signum s2))) mod (s2 + 186)) else ((if (if (if s8 then false else not not s5) then ((if true then (drop 5 s4 < -38) else (if s5 then s5 else s0)) && false) else (((176 - 134) >= 115) && s8)) then ((25 - 217) mod signum 169) else (if false then s2 else signum (if (drop 3 s4 == -89) then s2 else abs s2))) * s2)) * (if (not false && true) then s2 else (251 + 228))) else signum abs signum signum (if (if (drop 4 s9 <= abs abs 4216876360) then not ((s5 || true) || s5) else true) then (if (if true then true else s0) then abs (if (if true then true else s5) then (43 mod s2) else 16) else (if (true == (if s8 then false else true)) then signum (s2 div 208) else 209)) else (if s0 then signum ((42 mod 252) * s2) else abs 26)))
+(Int64) s3 = [-9126760040987972935,1218119918749424957,3177867650503373908] ++ (if false then (1481057631993949624 mod 5696840990821720401) else (8429345962175580354 div s3))
+(Int8) s4 = [-8,125,-102,30,-60,-90,86] ++ abs 12
+(Bool) s5 = [true] ++ (if (if not true then not (if false then (if (if (if s0 then not (false && false) else false) then s8 else (if s8 then false else (if not (if false then s5 else s5) then (s1 <= (if false then drop 2 s1 else -7620660020993321215)) else (if not s0 then (956620982 /= 1596122693) else false)))) then s8 else not (signum abs drop 2 s1 /= -4259760930290189432)) else s0) else (signum (if not false then s1 else signum abs ((if (s6 >= drop 2 s6) then drop 1 s1 else drop 1 s3) mod (8225566634069204232 + signum 3272640361044920784))) == 7938938349103345170)) then (if (((if (if ((if not false then 45509 else 25867) /= 36742) then (not ((if true then drop 3 s9 else drop 1 s9) /= (if false then drop 2 s9 else 660003794)) && s5) else (if s5 then (s8 || false) else not false)) then s2 else (signum 219 * (if not true then ((s2 * (if s0 then s2 else 181)) mod (158 mod abs 158)) else (if false then s2 else (if s8 then s2 else s2))))) - (if not not s0 then 27 else 41)) == signum 253) then not false else not (if (drop 5 s9 >= 3308123419) then false else not s0)) else (if (if true then false else s0) then ((signum (if s0 then (644 mod ((34581 - abs 4502) - (if (s8 && s5) then (1930 - 12963) else (if false then drop 5 s7 else 14611)))) else (3169 div (if s8 then (2438 div (if true then s6 else s6)) else drop 6 s7))) mod (((if true then abs drop 5 s7 else (if false then drop 1 s7 else signum signum 18877)) div abs s6) div drop 2 s7)) == 71) else true))
+(Word16) s6 = [49952,21332,38831] ++ 50143
+(Word16) s7 = [28135,3789,46559,298,51648,13709,22091] ++ signum 64900
+(Bool) s8 = [false] ++ (if s0 then s0 else true)
+(Word32) s9 = [336926937,1632922470,3543721071,307642002,284364856,185663591] ++ 341754049
+trigger "f0" = ((signum (if s5 then (if ((abs signum (if s0 then 80 else 139) div 94) >= (signum signum (s2 mod s2) mod 46)) then (if s8 then 52802 else abs signum (if not false then 7761 else (if s0 then s6 else 29744))) else 28736) else signum (drop 4 s7 * 8309)) + abs drop 4 s7) < 19699) [
+  arg (if (if (((1989932034 + abs drop 2 s9) < ((if (not (if (if s8 then s0 else s5) then true else (if false then s5 else s0)) || false) then abs (drop 5 s9 + drop 2 s9) else abs 593560626) mod drop 4 s9)) && not ((if ((if s0 then abs 44870 else 39140) /= signum (drop 1 s7 * (51278 + drop 2 s6))) then ((drop 1 s3 mod (if s0 then drop 1 s1 else (if s5 then 130834761565118584 else drop 2 s1))) div (((8938334085141395164 mod s3) * s3) div (if not false then (if false then s1 else drop 1 s3) else s3))) else (if s8 then (if false then abs -6435346962614516023 else 2266152838212695319) else abs (if not s5 then drop 1 s3 else abs -1922281353444855542))) <= abs signum (if (if (if false then false else false) then true else (if true then true else true)) then ((2561851915610201092 + drop 2 s1) div signum -837001664518796948) else abs signum -4549308318062263932))) then not (if (drop 1 s3 /= (-3803563466426036555 div (-44221486804869184 * (if (if (if s5 then s5 else true) then (if s0 then s0 else false) else s0) then signum -7898404208828121728 else ((if s0 then 1428870929098102940 else 6797860652570765759) mod 2604448581615793380))))) then (true || false) else true) else (not (-4315980831736162777 > abs 1709045007862601067) || (not (true && not s8) == s5))) then (if s0 then (if not not not (drop 1 s3 <= abs (if false then 527574630031744849 else (3229012265793572254 - -580083106840842868))) then drop 3 s4 else 105) else abs -37) else ((drop 3 s4 div 45) - signum abs signum s4)),
+  arg -106,
+  arg (if (if (if (if (not false || true) then (abs (signum signum (if s5 then -3109547420157987142 else s3) * s3) > s1) else true) then s0 else ((s0 && not not false) || (s9 >= drop 5 s9))) then false else not (drop 2 s3 /= ((-6066933108070033000 div drop 1 s3) div (((drop 1 s1 + 9185235251909163978) mod drop 2 s3) mod signum s3)))) then (if (if true then not (if (if not not ((if s5 then false else true) || s5) then true else true) then s5 else s0) else not not true) then (if ((if true then not (if not s8 then not (if s5 then true else false) else ((false && s5) || (if (if s0 then s5 else false) then not s0 else not s0))) else not not s5) /= (abs s2 <= (if false then (if (if (if false then (if true then true else true) else (if s5 then s0 else s8)) then not (if s0 then false else false) else s8) then s2 else s2) else abs 168))) then 152 else (if s5 then ((s2 - 144) div s2) else s2)) else signum (if false then 241 else (if false then (if true then s2 else (if not s8 then (if true then ((if s0 then s2 else s2) div s2) else 38) else (if true then s2 else (if (drop 4 s9 >= 3865323621) then 23 else s2)))) else s2))) else (if (10369 >= (if not (75 > (if not not (47904 < drop 2 s6) then signum signum s2 else ((signum 125 - signum s2) + (abs s2 mod (if s8 then 24 else s2))))) then abs 4165 else s6)) then s2 else (234 - 240))),
+  arg (if ((if not (12 /= (-98 * ((if true then (87 + (if s8 then drop 2 s4 else 12)) else signum (if s5 then -122 else 101)) mod 13))) then (if (if not not not true then s8 else (if ((abs (if s8 then drop 2 s1 else drop 1 s1) + drop 1 s1) > (if s5 then s1 else (-5692731997992726946 div (if false then -3406036796787508714 else -1641691552196198765)))) then (if (((85 mod -59) - (if true then -88 else 47)) /= -24) then false else (if true then (signum drop 3 s7 == drop 5 s7) else false)) else not false)) then signum 236 else 241) else s2) == s2) then (if ((if true then s0 else (if true then true else s0)) || not s5) then abs (-19 - abs abs (drop 4 s4 div -26)) else drop 5 s4) else abs ((if ((not not true /= ((if s5 then (if (if s5 then s0 else true) then (false == true) else not s8) else (s1 /= drop 1 s1)) || (1829979571 == drop 2 s9))) && ((signum 6543596266444024512 - s3) >= drop 1 s1)) then 11 else abs 6) mod (-116 div abs (if (if s8 then ((if (-65 /= s4) then s1 else 710565971023940854) == s3) else s5) then signum (if s5 then -10 else ((-105 mod 58) mod 121)) else signum (((-100 + drop 5 s4) mod signum -69) div signum s4)))))
