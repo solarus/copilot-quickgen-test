@@ -1,0 +1,9 @@
+This is a proof of concept usage of the QuickGen library.
+
+* Installation and testing
+  #+BEGIN_EXAMPLE
+  $ cabal sandbox init
+  $ cabal sandbox add-source PATH_TO_QUICKGEN
+  $ cabal install --only-dependencies -j4
+  $ make
+  #+END_EXAMPLE
