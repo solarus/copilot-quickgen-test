@@ -21,12 +21,12 @@ import Unsafe.Coerce
 
 import Language
 
-type CPName = String
+type CopilotName = String
 -- | A Copilot expression represented as a Quickgen Exp and Type
-type CPExpr = (Exp, Type)
-type CPStream = (CPName, CPExpr)
-type CPTrigger = (CPName, Exp, [CPExpr])
-type CPSpec = ([CPStream], [CPTrigger])
+type CopilotExpr = (Exp, Type)
+type CopilotStream = (CopilotName, CopilotExpr)
+type CopilotTrigger = (CopilotName, Exp, [CopilotExpr])
+type CopilotSpec = ([CopilotStream], [CopilotTrigger])
 
 someStreamTy :: Type
 someStreamTy = Type [u] [] (ConT (mkName "Stream") [VarT u])
@@ -35,13 +35,13 @@ someStreamTy = Type [u] [] (ConT (mkName "Stream") [VarT u])
 boolStreamTy :: Type
 boolStreamTy = Type [] [] (ConT (mkName "Stream") [ConT (mkName "Bool") []])
 
-genExpr :: Language -> Type -> StdGen -> (CPExpr, StdGen)
+genExpr :: Language -> Type -> StdGen -> (CopilotExpr, StdGen)
 genExpr l t g = case generate l t seed of
     Nothing -> genExpr l t g'
     Just r  -> (r, g')
   where (seed, g') = next g
 
-genStreams :: Int -> StdGen -> (Language, [CPStream], StdGen)
+genStreams :: Int -> StdGen -> (Language, [CopilotStream], StdGen)
 genStreams n = go lang (map (('s':) . show) [1..n]) []
   where
     go l []     acc g = (l, reverse acc, g)
@@ -51,7 +51,7 @@ genStreams n = go lang (map (('s':) . show) [1..n]) []
             l'   = [c] `addTo` l
         in go l' ns ((name, r) : acc) g'
 
-genTriggers :: Language -> Int -> (Int, Int) -> StdGen -> [CPTrigger]
+genTriggers :: Language -> Int -> (Int, Int) -> StdGen -> [CopilotTrigger]
 genTriggers l n argsRange = go (map (('f':) . show) [1..n])
   where
     go []        _ = []
@@ -65,7 +65,7 @@ genTriggers l n argsRange = go (map (('f':) . show) [1..n])
                 in genArgs gen' (m-1) (r : acc)
         in (name, guardExp, args) : go ns g'''
 
-genSpec :: IO CPSpec
+genSpec :: IO CopilotSpec
 genSpec = do
     numStreams  <- randomRIO (2,12)
     numTriggers <- randomRIO (1,6)
