@@ -81,10 +81,7 @@ main = do
 
     (streams, triggers) <- genSpec
 
-    let fixIf' [] = []
-        fixIf' ('i' : 'f' : '\'' : xs) = "if''" ++ fixIf' xs
-        fixIf' (x : xs) = x : fixIf' xs
-        showExpr (e, t) = fixIf' (show e) ++ " :: " ++ show t
+    let showExpr (e, t) = show e ++ " :: " ++ show t
         showArg e = "arg (" ++ showExpr e ++ ")"
         showTrigger (n, g, as) =
             concat [ "trigger " ++ show n ++ " (" ++ showExpr (g, boolStreamTy) ++ ") [ "

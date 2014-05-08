@@ -11,11 +11,11 @@ cons = (:)
 sing :: a -> [a]
 sing = (:[])
 
-if'' :: Typed a => Stream Bool -> Stream a -> Stream a -> Stream a
-if'' b x y = if b then x else y
+ifBool :: Stream Bool -> Stream Bool -> Stream Bool -> Stream Bool
+ifBool b x y = if b then x else y
 
-if' :: Stream Bool -> Stream a -> Stream a -> Stream a
-if' = undefined
+ifWord64 :: Stream Bool -> Stream Word64 -> Stream Word64 -> Stream Word64
+ifWord64 b x y = if b then x else y
 
 
 dropBool :: Int -> Stream Bool -> Stream Bool

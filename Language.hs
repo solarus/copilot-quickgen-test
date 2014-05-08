@@ -10,7 +10,8 @@ import           Testing.QuickGen
 lang :: Language
 lang = $(defineLanguage [| ( cons
                            , sing
-                           , if'
+                           , ifBool
+                           , ifWord64
 
                            , true
                            , false
