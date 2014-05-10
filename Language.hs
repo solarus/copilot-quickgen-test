@@ -35,6 +35,11 @@ lang = $(defineLanguage [| ( cons
                            , lteWord64
                            , gtWord64
 
+                           , externBool
+                           , externWord64
+                           , ext1, ext2
+                           , ext3, ext4
+
                            , arbiInt
                            , arbiBool
                            , arbiListBool

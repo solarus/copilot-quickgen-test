@@ -93,3 +93,20 @@ arbiListWord64 = [1,2,3,4,5,6,7,8,9]
 
 arbiStreamWord64 :: Stream Word64
 arbiStreamWord64 = [9,8,7,6,5,4,3,2,1,0] ++ arbiStreamWord64
+
+type ExtBool = String
+type ExtWord64 = String
+
+ext1, ext2 :: ExtBool
+ext1 = "ext1"
+ext2 = "ext2"
+
+externBool :: ExtBool -> [Bool] -> Stream Bool
+externBool s xs = extern s (Just xs)
+
+ext3, ext4 :: ExtWord64
+ext3 = "ext3"
+ext4 = "ext4"
+
+externWord64 :: ExtWord64 -> [Word64] -> Stream Word64
+externWord64 s xs = extern s (Just xs)
