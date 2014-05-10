@@ -10,76 +10,22 @@ module Main where
 
 import Control.Exception.Base
 import Control.Monad (when)
+import Data.Functor
 import Data.List
 import GHC hiding (Type)
 import GHC.Paths (libdir)
 import System.Environment (getArgs)
 import System.IO
-import System.Random
-import Testing.QuickGen
 import Unsafe.Coerce
+import System.Random
 
-import Language
-
-type CopilotName = String
--- | A Copilot expression represented as a Quickgen Exp and Type
-type CopilotExpr = (Exp, Type)
-type CopilotStream = (CopilotName, CopilotExpr)
-type CopilotTrigger = (CopilotName, Exp, [CopilotExpr])
-type CopilotSpec = ([CopilotStream], [CopilotTrigger])
-
-someStreamTy :: Type
-someStreamTy = Type [u] [] (ConT (mkName "Stream") [VarT u])
-  where u = (0, Undecided)
-
-boolStreamTy :: Type
-boolStreamTy = Type [] [] (ConT (mkName "Stream") [ConT (mkName "Bool") []])
-
-genExpr :: Language -> Type -> StdGen -> (CopilotExpr, StdGen)
-genExpr l t g = case generate l t seed of
-    Nothing -> genExpr l t g'
-    Just r  -> (r, g')
-  where (seed, g') = next g
-
-genStreams :: Int -> StdGen -> (Language, [CopilotStream], StdGen)
-genStreams n = go lang (map (('s':) . show) [1..n]) []
-  where
-    go l []     acc g = (l, reverse acc, g)
-    go l (name:ns) acc g =
-        let (r@(_, ty), g') = genExpr l someStreamTy g
-            c    = (mkName name, ty)
-            l'   = [c] `addTo` l
-        in go l' ns ((name, r) : acc) g'
-
-genTriggers :: Language -> Int -> (Int, Int) -> StdGen -> [CopilotTrigger]
-genTriggers l n argsRange = go (map (('f':) . show) [1..n])
-  where
-    go []        _ = []
-    go (name:ns) g =
-        let ((guardExp, _), g') = genExpr l boolStreamTy g
-            (numArgs, g'')      = randomR argsRange g'
-            (args, g''')        = genArgs g'' numArgs []
-            genArgs gen 0 acc   = (acc, gen)
-            genArgs gen m acc   =
-                let (r, gen') = genExpr l someStreamTy gen
-                in genArgs gen' (m-1) (r : acc)
-        in (name, guardExp, args) : go ns g'''
-
-genSpec :: IO CopilotSpec
-genSpec = do
-    numStreams  <- randomRIO (2,12)
-    numTriggers <- randomRIO (1,6)
-    g <- getStdGen
-    let (l', streams, g') = genStreams numStreams g
-        triggers = genTriggers l' numTriggers (1,5) g'
-    return (streams, triggers)
+import Generate
 
 -- The code below is only for compilation of the generated value.
 main :: IO ()
 main = do
     hSetBuffering stdin LineBuffering
-
-    (streams, triggers) <- genSpec
+    (streams, triggers) <- fst . genSpec <$> getStdGen
 
     let showExpr (e, t) = show e ++ " :: " ++ show t
         showArg e = "arg (" ++ showExpr e ++ ")"
