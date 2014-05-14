@@ -1,9 +1,12 @@
+{-# LANGUAGE TemplateHaskell #-}
+
 module Generate where
 
 import Language (lang)
 
 import System.Random
 import Testing.QuickGen
+import Copilot.Language
 
 type CopilotName = String
 -- | A Copilot expression represented as a Quickgen Exp and Type
@@ -13,11 +16,12 @@ type CopilotTrigger = (CopilotName, Exp, [CopilotExpr])
 type CopilotSpec = ([CopilotStream], [CopilotTrigger])
 
 someStreamTy :: Type
+-- Cannot specify undecided types with getType unfortunately
 someStreamTy = Type [u] [] (ConT (mkName "Stream") [VarT u])
   where u = (-1, Undecided)
 
 boolStreamTy :: Type
-boolStreamTy = Type [] [] (ConT (mkName "Stream") [ConT (mkName "Bool") []])
+boolStreamTy = $(getType [t| Stream Bool |])
 
 genExpr :: Language -> Type -> StdGen -> (CopilotExpr, StdGen)
 genExpr l t g = case generate l t seed of
